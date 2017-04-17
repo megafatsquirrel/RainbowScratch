@@ -1,0 +1,26 @@
+{
+  "name": "rainbow-scratch-comic",
+  "version": "0.2.5",
+  "description": "A webcomic",
+  "engines": {
+    "node": "5.9.1"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ejs": "2.4.1",
+    "express": "4.13.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/megafatsquirrel/RainbowScratchComic"
+  },
+  "keywords": [
+    "node",
+    "heroku",
+    "express"
+  ],
+  "license": "MIT"
+}
