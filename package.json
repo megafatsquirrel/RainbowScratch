@@ -16,16 +16,16 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
+    "node-sass": "^4.5.2",
+    "sass-loader": "^6.0.3",
     "webpack": "^2.4.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/megafatsquirrel/RainbowScratch"
-  },
+  "repository": "https://github.com/megafatsquirrel/RainbowScratch",
   "keywords": [
     "node",
     "heroku",
     "express"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Matt English <menglish2451@gmail.com>"
 }
