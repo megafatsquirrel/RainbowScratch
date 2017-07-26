@@ -12,9 +12,7 @@
   },
   "dependencies": {
     "ejs": "2.4.1",
-    "express": "4.13.3"
-  },
-  "devDependencies": {
+    "express": "4.13.3",
     "less": "^2.7.2"
   },
   "repository": "https://github.com/megafatsquirrel/RainbowScratch",
