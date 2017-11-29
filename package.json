@@ -3,7 +3,7 @@
   "version": "0.2.5",
   "description": "A webcomic",
   "engines": {
-    "node": "6.11.1"
+    "node": "8.x"
   },
   "main": "index.js",
   "scripts": {
