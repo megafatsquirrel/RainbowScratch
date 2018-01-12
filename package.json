@@ -8,13 +8,15 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "lessc app/styles/main.less public/stylesheets/main.css"
+    "build": "lessc app/styles/main.less public/stylesheets/main.css",
+    "webpack": ""
   },
   "dependencies": {
     "ejs": "2.4.1",
     "express": "4.13.3",
     "helmet": "^3.8.0",
-    "less": "^2.7.2"
+    "less": "^2.7.2",
+    "webpack": "^3.10.0"
   },
   "repository": "https://github.com/megafatsquirrel/RainbowScratch",
   "keywords": [
