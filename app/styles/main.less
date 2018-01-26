@@ -19,35 +19,6 @@ body {
   flex-direction: column;
 }
 
-.navigation {
-  list-style: none;
-  height: 40px;
-  margin: 0;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: flex-start;
-  background-color: @light-blue;
-  padding: @sm-padding @sm-padding 0 @sm-padding;
-
-  & a {
-    display: block;
-    margin-right: @sm-padding;
-  }
-}
-
-@media all and (max-width: @md-device-width) {
-  .navigation {
-    justify-content: space-around;
-  }
-}
-
-@media all and (max-width: @sm-device-width) {
-  .navigation {
-    flex-direction: column;
-    padding-bottom: @sm-padding; 
-  }
-}
-
 .content {
   padding: @sm-padding;
 }
@@ -60,9 +31,8 @@ body {
 
 .comic-container {
   height: 400px;
-  width: 1200px;
+  width: 100%;
   background-color: #353030;
-  margin: auto;
 }
 
 .btn {
