@@ -44,6 +44,7 @@ body {
 @media all and (max-width: @sm-device-width) {
   .navigation {
     flex-direction: column;
+    padding-bottom: @sm-padding; 
   }
 }
 
@@ -91,6 +92,23 @@ body {
 }
 
 // TODO: Make hover actions for buttons
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
 
 .footer {
   flex: 1;
