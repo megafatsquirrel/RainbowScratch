@@ -6,22 +6,14 @@
 <body>
   <div class="content-container">
     <div class="content">
-      <header>
-          <div class="heading">
-            <h1>Welcome</h1>
-          </div>
-      </header>
+      <% include ../partials/header.ejs %>
+         
       <button class="btn">button</button>
       <button class="btn btn-large">button</button>
       <button class="btn btn-small">icon</button>
       <a href="#">Anchor</a>
     </div>
   </div>
-  <div class="content-container">
-      <div class="content">
-          <footer class="footer">rainbowscratch all rights reserved</footer>
-      </div>
-  </div>
-  <script src="js/bundle.js"></script>
+  <% include ../partials/footer.ejs %>
 </body>
 </html>
