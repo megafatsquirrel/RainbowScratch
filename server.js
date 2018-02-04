@@ -19,6 +19,10 @@ app.get('/design', function(request, response) {
   response.render('pages/design');
 });
 
+app.get('/ar', function(request, response) {
+  response.render('pages/ar');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });

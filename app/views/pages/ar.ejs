@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="js/vendor/aframe.min.js"></script>
+    <script src="js/vendor/aframe-ar.js"></script>
+</head>
+<body>
+    <a-scene embedded arjs='trackingMethod: best;'>
+        <a-anchor hit-testing-enabled='true'>
+            <a-torus position="1 1.5 -10" arc="270" radius="5" radius-tubular="0.1">
+            <a-animation attribute="color" dur="10000" from="green" to="red" repeat="indefinite"></a-animation>
+            </a-torus>
+            <a-box position="-1 0.5 -3" color="#4CC3D9">
+            <a-animation attribute="rotation" dur="500" fill="forwards" to="0 180 0" repeat="indefinite"></a-animation>
+            </a-box>
+            <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+            <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+            <a-plane src="images/ar_images/crate.jpg" position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+            <a-plane position="0 5 -8" width="9" height="1" color="#000000"></a-plane>
+            <a-text position="-0.5 5 -8" value="Hello, World!" color="#FFFFFF"></a-text>
+        </a-anchor>
+        <a-camera-static/>
+    </a-scene>
+</body>
+</html>
