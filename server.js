@@ -1,11 +1,14 @@
 var express = require('express');
 var helmet = require('helmet');
 var app = express();
+var quotes = require('./app/controllers/quotes');
 
 app.set('port', (process.env.PORT || 5000));
 app.use(helmet());
 
 app.use(express.static(__dirname + '/public'));
+
+app.use('/quotes', quotes);
 
 // views is directory for all template files
 app.set('views', 'app/views');
