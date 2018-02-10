@@ -17,12 +17,13 @@
     "css-loader": "^0.28.9",
     "ejs": "2.5.5",
     "express": "4.13.3",
-    "helmet": "^3.8.0",
-    "style-loader": "^0.19.1",
-    "webpack": "^3.10.0",
     "extract-text-webpack-plugin": "^3.0.2",
+    "helmet": "^3.8.0",
     "less": "^2.7.3",
-    "less-loader": "^4.0.5"
+    "less-loader": "^4.0.5",
+    "style-loader": "^0.19.1",
+    "vuejs": "^3.0.1",
+    "webpack": "^3.10.0"
   },
   "repository": "https://github.com/megafatsquirrel/RainbowScratch",
   "keywords": [
@@ -32,7 +33,5 @@
   ],
   "license": "MIT",
   "author": "Matt English <menglish2451@gmail.com>",
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }
