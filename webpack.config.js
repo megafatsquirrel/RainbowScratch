@@ -17,6 +17,13 @@ module.exports = {
           fallback: 'style-loader',
           use: [ 'css-loader', 'less-loader' ],
         })
+      },
+      {
+        test: /\.vue$/,
+        loader: 'vue-loader',
+        options: {
+          extractCSS: true
+        }
       }
     ]
   },
