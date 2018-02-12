@@ -1,8 +1,19 @@
+// main.js
 import Vue from 'vue'
-import App from './views/App.vue'
+import App from './App.vue'
+import { createRouter } from './router.js'
 
-Vue.config.productionTip = false
+// export a factory function for creating fresh app, router and store
+// instances
+export function createApp() {
+  // create router instance
+  const router = createRouter();
 
-new Vue({
-  render: h => h(App)
-}).$mount('#app')
+  const app = new Vue({
+    router,
+    // the root instance simply renders the App component.
+    render: h => h(App)
+  });
+
+  return { app, router };
+}
