@@ -8,7 +8,7 @@ const quotes = require('./app/controllers/quotes');
 
 const Vue = require('vue')
 const renderer = require('vue-server-renderer').createRenderer({
-  template: fs.readFileSync('./app/views/pages/index.html', 'utf-8')
+  template: fs.readFileSync('./app/views/pages/army-builder-index.html', 'utf-8')
 });
 
 server.use(express.static(__dirname + '/public'));
@@ -19,10 +19,14 @@ server.set('port', (process.env.PORT || 5000));
 server.use('/quotes', quotes);
 
 // views is directory for all template files
-// server.set('views', 'app/views');
-// server.set('view engine', 'ejs');
+server.set('views', 'app/views');
+server.set('view engine', 'ejs');
 
-server.get('*', (request, response) => {
+server.get('/', (request, response) => {
+  response.render('pages/index');
+});
+
+server.get('/bolt-action', (request, response) => {
   bundle.default({ url: request.url }).then((app) => {    
     //context to use as data source
     //in the template for interpolation
@@ -49,15 +53,15 @@ server.get('*', (request, response) => {
   });
 });
 
-// app.get('/design', function(request, response) {
-//   response.render('pages/design');
-// });
+server.get('/design', (request, response) => {
+  response.render('pages/design');
+});
 
-// app.get('/ar', function(request, response) {
-//   response.render('pages/ar');
-// });
+server.get('/ar', (request, response) => {
+  response.render('pages/ar');
+});
 
-server.listen(server.get('port'), function() {
+server.listen(server.get('port'), () => {
   console.log('Node app is running on port', server.get('port'));
 });
 
