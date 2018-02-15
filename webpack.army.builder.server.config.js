@@ -8,12 +8,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpackConfig = merge(baseWebpackConfig, {
   target: 'node',
   entry: {
-    app: './app/entry-server.js'
+    app: './app/army-builder-entry-server.js'
   },
   devtool: false,
   output: {  
     path: path.resolve(__dirname, 'public/js/'),
-    filename: 'server.bundle.js',
+    filename: 'army-builder-server.bundle.js',
     libraryTarget: 'commonjs2'
   },
   externals: Object.keys(require('./package.json').dependencies),

@@ -1,4 +1,4 @@
-import { createApp } from './main.js'
+import { createApp } from './army-builder-main.js'
 
 const { app } = createApp()
 

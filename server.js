@@ -3,7 +3,7 @@ const server = express();
 const helmet = require('helmet');
 const fs = require('fs');
 const path = require('path');
-const bundle =  require('./public/js/server.bundle.js');
+const bundle =  require('./public/js/army-builder-server.bundle.js');
 const quotes = require('./app/controllers/quotes');
 
 const Vue = require('vue')
@@ -28,13 +28,9 @@ server.get('/', (request, response) => {
 
 server.get('/bolt-action', (request, response) => {
   bundle.default({ url: request.url }).then((app) => {    
-    //context to use as data source
-    //in the template for interpolation
+
     const context = {
-      title: 'Vue JS - Server Render',
-      meta: `
-        <meta description="vuejs server side render">
-      `
+      title: 'Bolt Action - Army Builder'
     };
 
     renderer.renderToString(app, context, (err, html) => {   

@@ -1,5 +1,5 @@
 //server-entry.js
-import { createApp } from './main.js';
+import { createApp } from './army-builder-main.js';
 
 export default context => {
   // since there could potentially be asynchronous route hooks or components,

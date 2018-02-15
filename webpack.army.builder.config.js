@@ -3,10 +3,10 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  entry: [ './app/main.js', './app/styles/main.less' ], 
+  entry: './app/army-builder-entry-client.js', 
   output: {  
     path: path.resolve(__dirname, 'public/js/'),
-    filename: 'bundle.js',
+    filename: 'army-builder-bundle.js',
     publicPath: '/public/js',
   },
   module: {
@@ -17,16 +17,6 @@ module.exports = {
           'vue-style-loader',
           'css-loader'
         ],
-      },
-      {
-        test: /\.less$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [ 
-            'css-loader', 
-            'less-loader' 
-          ],
-        })
       },
       {
         test: /\.scss$/,
@@ -95,9 +85,7 @@ module.exports = {
     hints: false
   },
   devtool: '#eval-source-map',
-  plugins: [
-    new ExtractTextPlugin('../styles/main.css')
-  ]
+  plugins: []
 }
 
 if (process.env.NODE_ENV === 'production') {
