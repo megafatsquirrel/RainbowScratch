@@ -9,3 +9,6 @@
 * Create subdomain for games
 * Styles and how should the site look
 * Add tutorials
+
+# Fixes TODOs
+* The main webpack config creates a sourcemap for CSS...not required and shouldn't be built
