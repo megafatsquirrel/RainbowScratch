@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const bundle =  require('./public/js/army-builder-server.bundle.js');
 const quotes = require('./app/controllers/quotes');
+const armyBuilderData = require('./app/models/army-builder-data.js');
 
 const Vue = require('vue')
 const renderer = require('vue-server-renderer').createRenderer({
