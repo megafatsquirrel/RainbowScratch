@@ -24,7 +24,7 @@ module.exports.up = function (next) {
       if (err) throw err;
     });
 
-    client.close(function (err) {
+    client.close((err) => {
       if(err) throw err;
     });
   });
@@ -42,7 +42,7 @@ module.exports.down = function (next) {
       if (err) throw err;
     });
 
-    client.close(function (err) {
+    client.close((err) => {
       if(err) throw err;
     });
   });
