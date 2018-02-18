@@ -1,3 +1,4 @@
+const migrate = require('migrate');
 const express = require('express');
 const server = express();
 const helmet = require('helmet');
@@ -11,6 +12,20 @@ const Vue = require('vue')
 const renderer = require('vue-server-renderer').createRenderer({
   template: fs.readFileSync('./app/views/pages/army-builder-index.html', 'utf-8')
 });
+
+migrate.load({
+  stateStore: '.migrate'
+}, function (err, set) {
+  if (err) {
+    throw err
+  }
+  set.up(function (err) {
+    if (err) {
+      throw err
+    }
+    console.log('migrations successfully ran')
+  })
+})
 
 server.use(express.static(__dirname + '/public'));
 server.set('port', (process.env.PORT || 5000));
