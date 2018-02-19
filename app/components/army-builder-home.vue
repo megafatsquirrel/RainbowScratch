@@ -9,8 +9,9 @@
               <label class="label">Pick Nation</label>
               <div class="control">
                 <div class="select">
-                  <select>
-                    <option>Germany</option>
+                  <select v-on:change="getNationArmy">
+                    <option value="empty"></option>
+                    <option value="germany">Germany</option>
                   <select>
                 </div>
               </div>
@@ -23,6 +24,8 @@
                 </label>
               </div>
               <!-- First select unit type -->
+              <div>{{armyData}}</div>
+              <div id="armyDataType"></div>
               <div>
                 <label class="label">Officer</label>
                 <div class="control">
@@ -68,7 +71,19 @@
 
 <script>
 export default {
-  name: 'army-builder-home'
+  name: 'army-builder-home',
+  methods: {
+    getNationArmy: function(e) {
+      this.$store.dispatch('getNationArmy').then(() => {
+        document.getElementById('armyDataType').innerHTML = this.$store.state.armyData[0].type;
+      });
+    }
+  },
+  computed: {
+    armyData () {
+      return this.$store.getters.returnArmyData;
+    }
+  }
 }
 </script>
 
