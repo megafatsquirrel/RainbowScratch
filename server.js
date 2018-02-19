@@ -7,10 +7,21 @@ const path = require('path');
 const bundle =  require('./public/js/army-builder-server.bundle.js');
 const quotes = require('./app/controllers/quotes');
 const armyBuilderData = require('./app/models/army-builder-data.js');
+const germanArmy = require('./app/models/german-army');
+
+const mongodb = require('mongodb');
+const uri = process.env.MONGODB_URI;
+const dbName = process.env.DB_NAME;
 
 const Vue = require('vue')
 const renderer = require('vue-server-renderer').createRenderer({
   template: fs.readFileSync('./app/views/pages/army-builder-index.html', 'utf-8')
+});
+
+var db;
+mongodb.MongoClient.connect(uri, (err, client) => {
+  if (err) throw err;
+  db = client.db(dbName);
 });
 
 migrate.load({
@@ -40,6 +51,13 @@ server.set('view engine', 'ejs');
 
 server.get('/', (request, response) => {
   response.render('pages/index');
+});
+
+// TODO move to controller file
+server.get('/rs/getGermanArmyData', (request, response) => {
+  db.collection('army').find().toArray((err, result) => {
+    response.send(result);
+  });
 });
 
 server.get('/bolt-action', (request, response) => {
@@ -75,6 +93,7 @@ server.get('/ar', (request, response) => {
 
 server.listen(server.get('port'), () => {
   console.log('Node app is running on port', server.get('port'));
+  console.log(`This process is pid ${process.pid}`);
 });
 
 
