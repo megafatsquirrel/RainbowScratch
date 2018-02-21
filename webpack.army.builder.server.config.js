@@ -8,7 +8,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const webpackConfig = merge(baseWebpackConfig, {
   target: 'node',
   entry: {
-    app: './app/army-builder-entry-server.js'
+    app: './app/army-builder/army-builder-entry-server.js'
   },
   devtool: false,
   output: {  
