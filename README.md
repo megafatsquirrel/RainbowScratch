@@ -3,6 +3,8 @@
 # TODO
 * Create some components
 * Create comic layout with components
+* Add favicon
+* Add mainfest.json w/ cached assets
 
 
 # Random TODOs
