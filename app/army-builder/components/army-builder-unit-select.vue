@@ -1,8 +1,8 @@
 <template>
   <div v-if="this.$store.state.armyData.length > 0">
-    <h3 class="title is-4">{{ unitGroupTitle }}</h3>
-    <div class="columns is-mobile">
-      <div class="column">
+    <h5 class="title is-5">{{ unitGroupTitle }}</h5>
+    <div class="columns is-multiline is-mobile">
+      <div class="column is-half-mobile is-half-desktop">
         <div>
           <label class="label">{{ this.$store.state.armyData[0].name }}</label>
           <div class="control">
@@ -15,7 +15,7 @@
           </div>
         </div>
       </div>
-      <div class="column">
+      <div class="column is-half-mobile is-half-desktop">
         <div>
           <!-- Second select unit exp level -->
           <!-- This selection will depend on what force was selected -->
@@ -35,11 +35,15 @@
         <div>
           <!--  Options for each unit - extra men or weapons -->
           <label class="label">{{ this.$store.state.armyData[0].team }}</label>
-          <select>
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-          <select>
+          <div class="control">
+            <div class="select">
+              <select>
+                <option>0</option>
+                <option>1</option>
+                <option>2</option>
+              <select>
+            </div>
+          </div>
         </div>
       </div>
     </div>
