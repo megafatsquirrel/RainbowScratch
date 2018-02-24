@@ -9,6 +9,7 @@
   "scripts": {
     "start": "node server.js",
     "build": "npm run build:rainbow && npm run build:army-builder-server && npm run build:army-builder-client",
+    "build:army": "npm run build:army-builder-server && npm run build:army-builder-client",
     "build:army-builder-client": "cross-env NODE_ENV=production webpack --config webpack.army.builder.config.js --progress --hide-modules",
     "build:army-builder-server": "cross-env NODE_ENV=production webpack --config webpack.army.builder.server.config.js --progress --hide-modules",
     "build:rainbow": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress --hide-modules",
