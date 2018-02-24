@@ -1,7 +1,7 @@
 <template>
-  <div v-if="this.$store.state.armyData.length > 0">
-    <h5 class="title is-5">{{ unitGroupTitle }}</h5>
-    <div class="columns is-multiline is-mobile">
+  <div v-if="this.$store.state.armyData.length > 0" class="unit-container">
+    <h5 class="title is-5 unit-container-header">{{ unitGroupTitle }}</h5>
+    <div class="columns is-multiline is-mobile unit-container-body">
       <div class="column is-half-mobile is-half-desktop">
         <div>
           <label class="label">{{ this.$store.state.armyData[0].name }}</label>
@@ -64,5 +64,18 @@ export default {
 </script>
 
 <style scoped>
+  .unit-container {
+    border: 1px solid;
+    margin-bottom: 20px;
+    border-radius: 5px;
+  }
 
+  .unit-container-header {
+    background-color: #e3e3e3;
+    padding: 10px;
+  }
+
+  .unit-container-body {
+    padding: 10px;
+  }
 </style>
