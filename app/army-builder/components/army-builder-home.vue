@@ -2,35 +2,32 @@
   <div class="container">
     <section class="section">
       <h1 class="title">Army Builder</h1>
-      <div class="columns">
-        <div class="column">
-          <form>
-            <div class="field">
-              <label class="label">Pick Nation</label>
-              <div class="control">
-                <div class="select">
-                  <select v-on:change="getNationArmy">
-                    <option value="empty"></option>
-                    <option value="germany">Germany</option>
-                  <select>
-                </div>
-              </div>
+      <form>
+        <div class="field">
+          <label class="label">Pick Nation</label>
+          <div class="control">
+            <div class="select is-fullwidth">
+              <select v-on:change="getNationArmy">
+                <option value="empty"></option>
+                <option value="germany">Germany</option>
+              <select>
             </div>
-            <div>
-              <div>
-                <label class="checkbox" disabled>
-                  <input type="checkbox" disabled>
-                  Use theater selection
-                </label>
-              </div>
-              <!-- First select unit type -->
-              <div>{{armyData}}</div>
-              <div id="armyDataType"></div>
-              <ABUnitSelect></ABUnitSelect>
-            </div>
-          </form>
+          </div>
         </div>
-      </div>
+        <div>
+          <div>
+            <label class="checkbox" disabled>
+              <input type="checkbox" disabled>
+              Use theater selection
+            </label>
+          </div>
+          <!-- First select unit type -->
+          <ABUnitSelect unit-group-title="Headquarters"></ABUnitSelect>
+          <ABUnitSelect unit-group-title="First Squad"></ABUnitSelect>
+          <ABUnitSelect unit-group-title="Second Squad"></ABUnitSelect>
+          <div>{{armyData}}</div>
+        </div>
+      </form>
     </section>
   </div>
 </template>
@@ -46,7 +43,7 @@ export default {
   methods: {
     getNationArmy: function(e) {
       this.$store.dispatch('getNationArmy').then(() => {
-        document.getElementById('armyDataType').innerHTML = this.$store.state.armyData[0].type;
+        //document.getElementById('armyDataType').innerHTML = this.$store.state.armyData[0].type;
       });
     }
   },
