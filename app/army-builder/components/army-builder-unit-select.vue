@@ -1,6 +1,6 @@
 <template>
   <div v-if="this.$store.state.armyData.length > 0" class="unit-container">
-    <h5 class="title is-5 unit-container-header">{{ unitGroupTitle }}</h5>
+    <h5 class="title is-5 unit-container-header">{{ unitGroupTitle }} - {{ this.$store.state.armyData[0].type }}</h5>
     <div class="columns is-multiline is-mobile unit-container-body">
       <div class="column is-half-mobile is-half-desktop">
         <div>
