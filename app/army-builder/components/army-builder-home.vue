@@ -26,7 +26,7 @@
               <!-- First select unit type -->
               <div>{{armyData}}</div>
               <div id="armyDataType"></div>
-              <div>
+              <div v-if="this.$store.state.armyData.length > 0">
                 <label class="label">Officer</label>
                 <div class="control">
                   <div class="select">
@@ -38,7 +38,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div v-if="this.$store.state.armyData.length > 0">
                 <!-- Second select unit exp level -->
                 <!-- This selection will depend on what force was selected -->
                 <label class="label">Exp</label>
@@ -52,7 +52,7 @@
                   </div>
                 </div>
               </div>
-              <div>
+              <div v-if="this.$store.state.armyData.length > 0">
                 <!--  Options for each unit - extra men or weapons -->
                 <label>Extra Men</label>
                 <select>
