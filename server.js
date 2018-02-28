@@ -53,7 +53,7 @@ server.get('/', (request, response) => {
 
 // TODO move to controller file
 server.get('/rs/getGermanArmyData', (request, response) => {
-  db.collection('army').find().toArray((err, result) => {
+  db.collection('germany').find().toArray((err, result) => {
     response.send(result);
   });
 });

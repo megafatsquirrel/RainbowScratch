@@ -1,17 +1,17 @@
 {
-  "lastRun": "1518932624285-add-german-medic.js",
+  "lastRun": "1518932624285-add-german-officer.js",
   "migrations": [
     {
       "title": "1518932624285-add-german-forward-observer.js",
-      "timestamp": 1519706285121
+      "timestamp": 1519793663107
     },
     {
       "title": "1518932624285-add-german-medic.js",
-      "timestamp": 1519706285124
+      "timestamp": 1519793663109
     },
     {
       "title": "1518932624285-add-german-officer.js",
-      "timestamp": 1519706051510
+      "timestamp": 1519793663111
     },
     {
       "title": "20122242018-add-germany.js",

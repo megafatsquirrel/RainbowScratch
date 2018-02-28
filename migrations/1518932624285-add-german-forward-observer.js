@@ -8,16 +8,21 @@ module.exports.up = function (next) {
       nation: 'germany',
       category: 'infantry',
       type: 'headquarters',
-      unit: 'forwardObserver',
-      cost: [
-        {artilleryForwardObserver: [{regular: 100, veteran: 115}]},
-        {airForceForwardObserver: [{regular: 75, veteran: 90}]} 
+      unit: 'forward observer',
+      cost: [{name: 'artillery forward observer', values: [{name: 'regular', value: 100},
+                                                         {name: 'veteran', value: 115}]},
+             {name: 'air force forward observer', values: [{name: 'regular', value: 75}, 
+                                                        {name: 'veteran', value: 90}]} 
       ],
       team: '1 forward observer and up to 2 further men',
       composition: '',
       damageValue: '',
       weapons: ['pistol', 'submachine gun', 'rifle', 'assault rifle'],
-      options: [{option: 'extra men'}, {regular: 10, veteran: 13, max: 2}],
+      options: [{option: 'extra men', 
+                 values: [{name: 'regular', value: 10}, 
+                          {name: 'veteran', value: 13}, 
+                          {name: 'max', value: 2}]
+                }],
       specialRules: ''
     }
   ];

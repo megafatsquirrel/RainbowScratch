@@ -4,28 +4,40 @@ import Vuex from 'vuex'
 export function createStore() {
     return new Vuex.Store({
         state: {
-            armyData: {}
+            armyData: {
+                germany: {}
+            },
+            isNationLoaded: false
         },
         mutations: {
-            updateArmyObject (state, data) {
-                state.armyData = data;
-            }
-        },
-        actions: {
-            getNationArmy(context) {
-                return new Promise((resolve) => {
-                    Vue.http.get('/rs/getGermanArmyData').then(response => {
-                    context.commit('updateArmyObject', response.body);
-                    resolve();
-                    }, response => {
-                    // error callback
-                    });
-                });
+            updateGermanArmyObject (state, data) {
+                state.armyData.germany = data;
+            },
+            updateIsNationLoaded (state, data) {
+                state.isNationLoaded = data;
             }
         },
         getters: {
             returnArmyData: state => {
-                return state.armyData
+                return state.armyData;
+            },
+            returnGermanArmyData: state => {
+                return state.armyData.germany;
+            },
+            returnIsNationLoaded: state => {
+                return state.isNationLoaded;
+            }
+        },
+        actions: {
+            getGermanArmy(context) {
+                return new Promise((resolve) => {
+                    Vue.http.get('/rs/getGermanArmyData').then(response => {
+                        context.commit('updateGermanArmyObject', response.body);
+                        resolve();
+                    }, response => {
+                    // error callback
+                    });
+                });
             }
         }
     });

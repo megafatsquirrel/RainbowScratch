@@ -9,11 +9,15 @@
   "scripts": {
     "start": "node server.js",
     "build": "npm run build:rainbow && npm run build:army-builder-server && npm run build:army-builder-client",
+    "build-dev": "npm run build-dev:rainbow && npm run build-dev:army-builder-server && npm run build-dev:army-builder-client",
     "build:army": "npm run build:army-builder-server && npm run build:army-builder-client",
+    "build-dev:army": "npm run build-dev:army-builder-server && npm run build-dev:army-builder-client",
     "build:army-builder-client": "cross-env NODE_ENV=production webpack --config webpack.army.builder.config.js --progress --hide-modules",
     "build:army-builder-server": "cross-env NODE_ENV=production webpack --config webpack.army.builder.server.config.js --progress --hide-modules",
+    "build-dev:army-builder-client": "cross-env NODE_ENV=dev webpack --config webpack.army.builder.config.js --progress --hide-modules",
+    "build-dev:army-builder-server": "cross-env NODE_ENV=dev webpack --config webpack.army.builder.server.config.js --progress --hide-modules",
     "build:rainbow": "cross-env NODE_ENV=production webpack --config webpack.config.js --progress --hide-modules",
-    "build-dev": "cross-env NODE_ENV=development webpack --progress --config webpack.config.js",
+    "build-dev:rainbow": "cross-env NODE_ENV=dev webpack --config webpack.config.js --progress --hide-modules",
     "postinstall": "npm run build"
   },
   "dependencies": {

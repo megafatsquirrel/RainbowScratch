@@ -1,16 +1,16 @@
 <template>
-  <div v-if="this.$store.state.armyData.length > 0" class="unit-container">
-    <h5 class="title is-5 unit-container-header">{{ unitGroupTitle }} - {{ this.$store.state.armyData[0].type }}</h5>
+  <div v-if="this.$store.state.isNationLoaded" class="unit-container">
+    <h5 class="title is-5 unit-container-header">{{ unitGroupTitle }} - {{ this.$store.state.armyData.germany[0].type }}</h5>
     <div class="columns is-multiline is-mobile unit-container-body">
       <div class="column is-half-mobile is-half-desktop">
         <div>
-          <label class="label">{{ this.$store.state.armyData[0].name }}</label>
+          <label class="label">{{ unitType }}</label>
           <div class="control">
             <div class="select">
-              <select>
+              <select v-on:change="getUnitExp">
                 <option :value="null"></option>
-                <option v-for="unit in this.$store.state.armyData[0].cost" v-bind:key="unit.name">{{ unit.name }}</option>
-              <select>
+                <option v-for="unit in filteredUnits" v-bind:key="unit" :value="unit.name">{{unit.name}}</option>
+              </select>
             </div>
           </div>
         </div>
@@ -24,9 +24,8 @@
             <div class="select">
               <select>
                 <option :value="null"></option>
-                <option :value="this.$store.state.armyData[0].cost[0].regular" >Regular: {{ this.$store.state.armyData[0].cost[0].regular }} points</option>
-                <option :value="this.$store.state.armyData[0].cost[0].veteran" >Veteran: {{ this.$store.state.armyData[0].cost[0].veteran }} points</option>
-              <select>
+                <option v-for="unit in filterUnitExp" v-bind:key="unit.cost">{{ unit }}</option>
+              </select>
             </div>
           </div>
         </div>
@@ -34,14 +33,12 @@
       <div class="column">
         <div>
           <!--  Options for each unit - extra men or weapons -->
-          <label class="label">{{ this.$store.state.armyData[0].team }}</label>
+          <label class="label">{{ this.$store.state.armyData.germany[0].team }}</label>
           <div class="control">
             <div class="select">
               <select>
-                <option>0</option>
-                <option>1</option>
-                <option>2</option>
-              <select>
+                <option v-for="unit in filterOptions" v-bind:key="unit.value">{{ unit.key }}{{ unit.value }}</option>
+              </select>
             </div>
           </div>
         </div>
@@ -53,12 +50,29 @@
 <script>
 export default {
   name: 'army-builder-unit-select',
-  props: ['unitGroupTitle'],
+  props: ['unitGroupTitle', 'unitType'],
   methods: {
-    
+    getUnitExp: function(e) {
+      this.filterUnitExp(e.target.value);
+    }
   },
   computed: {
-    
+    filteredUnits() {
+      var unit = this.$store.state.armyData.germany.filter(unit => unit.unit === this.unitType);
+      return unit[0].cost;
+    },
+    filterUnitExp(value) {
+      return this.$store.state.armyData.germany.filter(unit => {
+        return unit.cost[value];
+      })
+    },
+    filterOptions() {
+      return this.$store.state.armyData.germany.filter(unit => {
+        if (unit.options[0].option === 'extra men') {
+          return unit.options[1];
+        }
+      })
+    }
   }
 }
 </script>

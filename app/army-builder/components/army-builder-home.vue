@@ -10,7 +10,7 @@
               <select v-on:change="getNationArmy">
                 <option value="empty"></option>
                 <option value="germany">Germany</option>
-              <select>
+              </select>
             </div>
           </div>
         </div>
@@ -22,9 +22,9 @@
             </label>
           </div>
           <!-- First select unit type -->
-          <ABUnitSelect unit-group-title="Headquarters"></ABUnitSelect>
-          <ABUnitSelect unit-group-title="First Squad"></ABUnitSelect>
-          <ABUnitSelect unit-group-title="Second Squad"></ABUnitSelect>
+          <ABUnitSelect unit-group-title="Headquarters" unit-type="officer"></ABUnitSelect>
+          <!-- <ABUnitSelect unit-group-title="First Squad"></ABUnitSelect>
+          <ABUnitSelect unit-group-title="Second Squad"></ABUnitSelect> -->
           <div>{{armyData}}</div>
         </div>
       </form>
@@ -42,14 +42,17 @@ export default {
   },
   methods: {
     getNationArmy: function(e) {
-      this.$store.dispatch('getNationArmy').then(() => {
+      if (e.target.value === 'germany') {
+        this.$store.dispatch('getGermanArmy').then(() => {
+          this.$store.commit('updateIsNationLoaded', true);
         //document.getElementById('armyDataType').innerHTML = this.$store.state.armyData[0].type;
-      });
+        });
+      }
     }
   },
   computed: {
     armyData () {
-      return this.$store.getters.returnArmyData;
+      return this.$store.getters.returnGermanArmyData;
     }
   }
 }

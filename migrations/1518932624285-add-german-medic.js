@@ -9,14 +9,15 @@ module.exports.up = function (next) {
       category: 'infantry',
       type: 'headquarters',
       unit: 'medic',
-      cost: [
-        {medic: [{veteran: 65}]}
-      ],
+      cost: [{name: 'medic', values: [{name: 'veteran', value: 65}]}],
       team: '1 medic and up to 2 further men',
       composition: '',
       damageValue: '',
       weapons: ['pistol', 'none'],
-      options: [{option: 'extra men'}, {regular: 8, max: 2}],
+      options: [{option: 'extra men', 
+                 values: [{name: 'regular', value: 8}, 
+                          {name: 'max', value: 2}]
+                }],
       specialRules: ''
     }
   ];
