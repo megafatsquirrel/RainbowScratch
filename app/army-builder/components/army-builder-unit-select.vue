@@ -4,44 +4,48 @@
     <div class="columns is-multiline is-mobile unit-container-body">
       <div class="column is-half-mobile is-half-desktop">
         <div>
-          <label class="label">{{ unitType }}</label>
-          <div class="control">
+          <label class="label capts">{{ unitType }}</label>
+          <!-- <div class="control">
             <div class="select">
               <select v-on:change="getUnitExp">
                 <option :value="null"></option>
                 <option v-for="unit in filteredUnits" v-bind:key="unit" :value="unit.name">{{unit.name}}</option>
               </select>
             </div>
+          </div> -->
+          <div class="control">
+            <div class="radio">
+              <label class="radio" v-for="unit in filteredUnits" v-bind:key="unit">
+                <input type="radio" name="baseunit" v-model="pickedUnit" v-on:change="getUnitExp" :value="unit.values[0].value">
+                <span class="capts">Unit: {{unit.name}}</span> - Cost: {{unit.values[0].value}}
+                <br>
+              </label>
+              
+            </div>
           </div>
         </div>
       </div>
       <div class="column is-half-mobile is-half-desktop">
         <div>
-          <!-- Second select unit exp level -->
-          <!-- This selection will depend on what force was selected -->
-          <label class="label">Exp</label>
-          <div class="control">
-            <div class="select">
-              <select>
-                <option :value="null"></option>
-                <option v-for="unit in filterUnitExp" v-bind:key="unit.cost">{{ unit }}</option>
-              </select>
-            </div>
-          </div>
+
         </div>
       </div>
       <div class="column">
         <div>
+          <input class="input" type="number" value="0">
           <!--  Options for each unit - extra men or weapons -->
-          <label class="label">{{ this.$store.state.armyData.germany[0].team }}</label>
+          <!-- <label class="label">{{ this.$store.state.armyData.germany[0].team }}</label>
           <div class="control">
             <div class="select">
               <select>
                 <option v-for="unit in filterOptions" v-bind:key="unit.value">{{ unit.key }}{{ unit.value }}</option>
               </select>
             </div>
-          </div>
+          </div> -->
         </div>
+      </div>
+      <div class="column">
+        {{pickedUnit}}
       </div>
     </div>
   </div>
@@ -53,7 +57,7 @@ export default {
   props: ['unitGroupTitle', 'unitType'],
   methods: {
     getUnitExp: function(e) {
-      this.filterUnitExp(e.target.value);
+      console.log('HELLO');
     }
   },
   computed: {
@@ -61,17 +65,8 @@ export default {
       var unit = this.$store.state.armyData.germany.filter(unit => unit.unit === this.unitType);
       return unit[0].cost;
     },
-    filterUnitExp(value) {
-      return this.$store.state.armyData.germany.filter(unit => {
-        return unit.cost[value];
-      })
-    },
     filterOptions() {
-      return this.$store.state.armyData.germany.filter(unit => {
-        if (unit.options[0].option === 'extra men') {
-          return unit.options[1];
-        }
-      })
+      return unit.options[0].option;
     }
   }
 }
@@ -91,5 +86,9 @@ export default {
 
   .unit-container-body {
     padding: 10px;
+  }
+
+  .capts {
+    text-transform: capitalize;
   }
 </style>
