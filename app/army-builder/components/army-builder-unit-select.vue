@@ -2,7 +2,7 @@
   <div v-if="this.$store.state.isNationLoaded" class="unit-container">
     <h5 class="title is-5 unit-container-header">{{ unitGroupTitle }} - {{ this.$store.state.armyData.germany[0].type }}</h5>
     <div class="columns is-multiline is-mobile unit-container-body">
-      <div class="column is-half-mobile is-half-desktop">
+      <div class="column is-full">
         <div>
           <label class="label capts">{{ unitType }}</label>
           <!-- <div class="control">
@@ -14,13 +14,11 @@
             </div>
           </div> -->
           <div class="control">
-            <div class="radio">
-              <label class="radio" v-for="unit in filteredUnits" v-bind:key="unit">
+            <div class="" v-for="unit in filteredUnits" v-bind:key="unit">
+              <label class="radio">
                 <input type="radio" name="baseunit" v-model="pickedUnit" v-on:change="getUnitExp" :value="unit.values[0].value">
                 <span class="capts">Unit: {{unit.name}}</span> - Cost: {{unit.values[0].value}}
-                <br>
               </label>
-              
             </div>
           </div>
         </div>
