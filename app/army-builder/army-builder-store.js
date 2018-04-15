@@ -39,12 +39,10 @@ export function createStore() {
             },
             updateCurrentListPoint (state, data) {
                 let total = 0;
-                console.log('hey');
                 for (var unitPoints in state.currentList.points) {
                     if (state.currentList.points[unitPoints].type !== 'total')
                     total += state.currentList.points[unitPoints].value;
                 }
-
                 state.currentList.points.total.value = total;
             }
         },

@@ -6,7 +6,7 @@
         <div>
           <label class="label capts">{{ unitType }}</label>
           <div class="control">
-            <div v-for="unit in filteredUnits" v-bind:key="unit">
+            <div v-for="unit in filteredUnits" :key="unit.unit">
               <label class="radio">
                 <input type="radio" name="baseunit"  v-on:change="updatePoints" :value="unit.values[0].value">
                 <span class="capts">Unit: {{unit.name}}</span> - Cost: {{unit.values[0].value}}
@@ -16,20 +16,7 @@
         </div>
       </div>
       <div class="column is-full">
-        <div>
-          <div class="control">
-            <div>
-              <label class="radio">
-                <input type="radio" name="baseunitExp"  v-on:change="updatePoints" :value="0">
-                <span class="capts">Regular</span> - Cost: 
-              </label>
-              <label class="radio">
-                <input type="radio" name="baseunitExp"  v-on:change="updatePoints" :value="0">
-                <span class="capts">Veteran</span> - Cost: 
-              </label>
-            </div>
-          </div>
-        </div>
+        <ABUnitExpSelect></ABUnitExpSelect>
       </div>
       <div class="column">
         <div>
@@ -53,9 +40,13 @@
 </template>
 
 <script>
-import { get } from 'lodash';
+import ABUnitExpSelect from './army-builder-unit-exp-select.vue';
+
 export default {
   name: 'army-builder-unit-select',
+  components: {
+    ABUnitExpSelect  
+  },
   props: ['unitGroupTitle', 'unitType', 'unitGroup'],
   methods: {
     updatePoints: function(e) {
@@ -67,12 +58,13 @@ export default {
   },
   computed: {
     filteredUnits() {
+      console.log('hey');
       var unit = this.$store.state.armyData.germany.filter(unit => unit.unit === this.unitType);
       return unit[0].cost; // Will show the base regular unit cost
     },
-    filterOptions() {
-      return unit.options[0].option;
-    },
+    // filterOptions() {
+    //   return unit.options[0].option;
+    // },
     totalPoints() {
       return this.$store.state.currentList.points.total.value;
     }
