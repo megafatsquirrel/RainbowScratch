@@ -2,12 +2,27 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 export function createStore() {
+    let hq = { type: '', value: 0 };
+    let infantry = { type: '', value: 0 };
+    let infantry2 = { type: '', value: 0 };
+    let total = { type: 'total', value: 0 };
+
     return new Vuex.Store({
         state: {
             armyData: {
                 germany: {}
             },
-            isNationLoaded: false
+            isNationLoaded: false,
+            currentList: {
+                army: '',
+                units: [],
+                points: {
+                    hq,
+                    infantry,
+                    infantry2,
+                    total
+                }
+            }
         },
         mutations: {
             updateGermanArmyObject (state, data) {
@@ -15,6 +30,22 @@ export function createStore() {
             },
             updateIsNationLoaded (state, data) {
                 state.isNationLoaded = data;
+            },
+            updateUnitPoints (state, data) {
+                if ( data.unitGroup === 'hq' ) {
+                    state.currentList.points.hq.value -= data.oldValue;
+                    state.currentList.points.hq.value += data.newValue;
+                }
+            },
+            updateCurrentListPoint (state, data) {
+                let total = 0;
+                console.log('hey');
+                for (var unitPoints in state.currentList.points) {
+                    if (state.currentList.points[unitPoints].type !== 'total')
+                    total += state.currentList.points[unitPoints].value;
+                }
+
+                state.currentList.points.total.value = total;
             }
         },
         getters: {
@@ -35,7 +66,7 @@ export function createStore() {
                         context.commit('updateGermanArmyObject', response.body);
                         resolve();
                     }, response => {
-                    // error callback
+                        // error callback
                     });
                 });
             }

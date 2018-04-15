@@ -22,7 +22,7 @@
             </label>
           </div>
           <!-- First select unit type -->
-          <ABUnitSelect unit-group-title="Headquarters" unit-type="officer"></ABUnitSelect>
+          <ABUnitSelect unit-group-title="Headquarters" unit-type="officer" unit-group="hq"></ABUnitSelect>
           <!-- <ABUnitSelect unit-group-title="First Squad"></ABUnitSelect>
           <ABUnitSelect unit-group-title="Second Squad"></ABUnitSelect> -->
           <div>{{armyData}}</div>
