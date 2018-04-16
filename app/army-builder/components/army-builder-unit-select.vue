@@ -8,8 +8,8 @@
           <div class="control">
             <div v-for="unit in filteredUnits" :key="unit.unit">
               <label class="radio">
-                <input type="radio" name="baseunit"  v-on:change="updatePoints" :value="unit.values[0].value">
-                <span class="capts">Unit: {{unit.name}}</span> - Cost: {{unit.values[0].value}}
+                <input type="radio" name="baseunit"  v-on:change="updatePoints" :value="unit.values[0].value" :data-unitName=unit.name>
+                <span class="capts">Unit: {{ unit.name }}</span> - Cost: {{ unit.values[0].value }}
               </label>
             </div>
           </div>
@@ -17,10 +17,12 @@
       </div>
       <div class="column is-full">
         <ABUnitExpSelect></ABUnitExpSelect>
+        <div>{{ getSelectedUnitCosts }}</div>
       </div>
       <div class="column">
         <div>
           <input class="input" type="number" value="0">
+          Selected {{ getSelectedUnit }}
           <!--  Options for each unit - extra men or weapons -->
           <!-- <label class="label">{{ this.$store.state.armyData.germany[0].team }}</label>
           <div class="control">
@@ -47,26 +49,47 @@ export default {
   components: {
     ABUnitExpSelect  
   },
+  data: function() {
+    return {
+      selectedUnit: '',
+      selectedUnitCosts: [],
+    }
+  },
   props: ['unitGroupTitle', 'unitType', 'unitGroup'],
   methods: {
     updatePoints: function(e) {
       var oldValue = parseInt(this.$store.state.currentList.points.hq.value);
       var newValue = parseInt(e.currentTarget.value);
+      this.setSelectedUnit(e.target.dataset.unitname);
       this.$store.commit('updateUnitPoints', { newValue, oldValue, unitGroup: this.unitGroup });
       this.$store.commit('updateCurrentListPoint');
+      this.setSelectedUnitCost();
+    },
+    setSelectedUnit: function(unitName) {
+      this.selectedUnit = unitName;
+    },
+    setSelectedUnitCost: function() {
+      var unitData = this.$store.state.armyData.germany.filter(unit => unit.unit === this.unitType);
+      if (unitData) {
+        var unitCosts = unitData[0].cost;
+        var unitExp = unitCosts.filter(u => u.name === this.getSelectedUnit);
+        this.selectedUnitCosts = unitExp[0].values;
+      }
     }
   },
   computed: {
     filteredUnits() {
-      console.log('hey');
       var unit = this.$store.state.armyData.germany.filter(unit => unit.unit === this.unitType);
       return unit[0].cost; // Will show the base regular unit cost
     },
-    // filterOptions() {
-    //   return unit.options[0].option;
-    // },
     totalPoints() {
       return this.$store.state.currentList.points.total.value;
+    },
+    getSelectedUnit() {
+      return this.selectedUnit;
+    },
+    getSelectedUnitCosts() {
+      return this.selectedUnitCosts;
     }
   }
 }

@@ -22,10 +22,9 @@
             </label>
           </div>
           <!-- First select unit type -->
-          <ABUnitSelect unit-group-title="Headquarters" unit-type="officer" unit-group="hq"></ABUnitSelect>
+          <ABUnitSelect v-if="armyData.length > 0" unit-group-title="Headquarters" unit-type="officer" unit-group="hq"></ABUnitSelect>
           <!-- <ABUnitSelect unit-group-title="First Squad"></ABUnitSelect>
           <ABUnitSelect unit-group-title="Second Squad"></ABUnitSelect> -->
-          <div>{{armyData}}</div>
         </div>
       </form>
     </section>
@@ -45,7 +44,6 @@ export default {
       if (e.target.value === 'germany') {
         this.$store.dispatch('getGermanArmy').then(() => {
           this.$store.commit('updateIsNationLoaded', true);
-        //document.getElementById('armyDataType').innerHTML = this.$store.state.armyData[0].type;
         });
       }
     }
