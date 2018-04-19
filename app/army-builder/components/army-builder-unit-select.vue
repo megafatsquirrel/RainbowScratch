@@ -16,8 +16,9 @@
         </div>
       </div>
       <div class="column is-full">
-        <ABUnitExpSelect></ABUnitExpSelect>
-        <div>{{ getSelectedUnitCosts }}</div>
+        <div v-if="selectedUnitCosts.length > 0">
+          <ABUnitExpSelect :unitCosts="{ selectedUnitCosts }"></ABUnitExpSelect>
+        </div>
       </div>
       <div class="column">
         <div>

@@ -1,15 +1,11 @@
 <template>
   <div>
     <div class="control">
-      <div>
-          <label class="radio">
-          <input type="radio" name="baseunitExp" :value="0">
-          <span class="capts">Regular</span> - Cost: 0
-          </label>
-          <label class="radio">
-          <input type="radio" name="baseunitExp" :value="0">
-          <span class="capts">Veteran</span> - Cost: 0
-          </label>
+      <div v-for="(unit, index) in unitCosts.selectedUnitCosts" :key="index">
+        <label class="radio">
+          <input type="radio" :checked="index === 0" v-on:change="updateUnitExp" name="baseunitExp" :value="unit.value">
+          <span class="capts">{{ unit.name }}</span> - Cost: {{ unit.value }}
+        </label>
       </div>
     </div>
   </div>
@@ -17,7 +13,13 @@
 
 <script>
 export default {
-  name: 'army-builder-unit-exp-select'
+  name: 'army-builder-unit-exp-select',
+  props: ['unitCosts'],
+  methods: {
+    updateUnitExp: function() {
+      console.log('Helooo!');
+    }
+  }
 }
 </script>
 
