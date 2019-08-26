@@ -17,6 +17,7 @@ const renderer = require('vue-server-renderer').createRenderer({
 });
 
 var db;
+console.log(uri);
 mongodb.MongoClient.connect(uri, (err, client) => {
   if (err) throw err;
   db = client.db(dbName);

@@ -26,9 +26,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       compress: {
         warnings: false
       }
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true
     })
   ]
 });
